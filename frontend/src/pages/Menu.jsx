@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 import { getMenu } from "@/services/user";
 import { ShoppingCart } from "lucide-react";
@@ -62,40 +61,41 @@ const Menu = () => {
 
   const formatDate = (date) => format(new Date(date), "MMMM dd, yyyy");
 
-  const handleAddToCart = (menuId) => {
+  const handleAddToCart = (menu) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.menu_id === menuId);
+      const existingItem = prevCart.find((item) => item.id === menu.id);
       if (existingItem) {
         return prevCart.map((item) =>
-          item.menu_id === menuId
+          item.id === menu.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
-        return [...prevCart, { menu_id: menuId, quantity: 1 }];
+        return [...prevCart, { ...menu, quantity: 1 }];
       }
     });
   };
-
+  
   const handleRemoveFromCart = (menuId) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.menu_id === menuId);
+      const existingItem = prevCart.find((item) => item.id === menuId);
       if (existingItem.quantity === 1) {
-        return prevCart.filter((item) => item.menu_id !== menuId);
+        return prevCart.filter((item) => item.id !== menuId);
       } else {
         return prevCart.map((item) =>
-          item.menu_id === menuId
+          item.id === menuId
             ? { ...item, quantity: item.quantity - 1 }
             : item
         );
       }
     });
   };
-
+  
   const getQuantity = (menuId) => {
-    const cartItem = cart.find((item) => item.menu_id === menuId);
+    const cartItem = cart.find((item) => item.id === menuId);
     return cartItem ? cartItem.quantity : 0;
   };
+  
 
   const renderMenuSection = (menus) => (
     <section className="mb-8">
@@ -167,7 +167,7 @@ const Menu = () => {
                     <div className="flex items-center justify-between w-full">
                       <Button
                         className="bg-red-500 text-white w-8 h-8 flex items-center justify-center"
-                        onClick={() => handleRemoveFromCart(menu.id)}
+                        onClick={() => handleRemoveFromCart(menu)}
                       >
                         -
                       </Button>
@@ -176,7 +176,7 @@ const Menu = () => {
                       </span>
                       <Button
                         className="bg-primary text-white w-8 h-8 flex items-center justify-center"
-                        onClick={() => handleAddToCart(menu.id)}
+                        onClick={() => handleAddToCart(menu)}
                       >
                         +
                       </Button>
@@ -184,7 +184,7 @@ const Menu = () => {
                   ) : (
                     <Button
                       className="w-full bg-primary text-white hover:bg-primary/90"
-                      onClick={() => handleAddToCart(menu.id)}
+                      onClick={() => handleAddToCart(menu)}
                     >
                       Add
                     </Button>

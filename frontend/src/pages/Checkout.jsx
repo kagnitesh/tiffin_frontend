@@ -37,12 +37,7 @@ const Checkout = () => {
     }
   }, [cart, navigate]);
 
-  // Sample addresses for the dropdown
-  const sampleAddresses = [
-    { id: 1, label: "123 Main St, Springfield" },
-    { id: 2, label: "456 Elm St, Shelbyville" },
-    { id: 3, label: "789 Oak St, Capital City" },
-  ];
+
 
   // Form state
   const [form, setForm] = useState({
@@ -53,6 +48,8 @@ const Checkout = () => {
 
   // Validation errors
   const [errors, setErrors] = useState({});
+
+  // console.log(cart);
 
   // Handle form input changes
   const handleChange = (field, value) => {
@@ -88,13 +85,29 @@ const Checkout = () => {
     if (validateForm()) {
       // console.log("Order Data:", form);
       setIsLoading(true);
-      const orderData = { ...form, menus: cart };
+      // console.log(cart);
+      const orderData = { ...form, menus: cart.map((c)=>{
+        return {
+          menu_id: c.id,
+          quantity: c.quantity
+        }
+      }) };
       // console.log("Submitting Order:", orderData);
       addOrder(orderData)
         .then((resp) => {
           console.log(resp);
           const order = resp.order;
           const { id, mobile_no, totalAmount } = order;
+          const total = cart.reduce((total, item) => total + item.price * item.quantity, 0)
+          if(totalAmount!==total){
+            toast({
+              title: "Something went wrong",
+              description: "There is something wrong with last order.",
+              variant: "destructive",
+            });
+            navigate('/')
+            return;
+          }
           const paymentInfo = {
             orderId: id,
             amount: totalAmount,
@@ -143,84 +156,124 @@ const Checkout = () => {
   };
 
   return (
-    <div className="container mx-auto ">
-      {isLoading && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="loader"></div>
+    <>
+      <Header />
+      <div className="container mx-auto">
+        {isLoading && (
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="loader"></div>
+          </div>
+        )}
+  
+        <h2 className="text-2xl font-bold mb-2 text-center p-8 mt-8">Checkout</h2>
+  
+        {/* Cart Details */}
+        <div className="max-w-lg mx-auto bg-white p-6 shadow-lg border rounded-lg mb-8">
+          <h3 className="text-lg font-bold mb-4">Your Order Summary</h3>
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-start justify-between mb-4 border-b pb-4"
+            >
+              <img
+                src={item.photo_url}
+                alt={item.variant}
+                className="w-20 h-20 object-cover rounded-lg"
+              />
+              <div className="flex-1 ml-4">
+                <h4 className="text-md font-semibold">{item.variant}</h4>
+                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-700">
+                  Items: {item.menu_items.join(", ")}
+                </p>
+                <p className="text-sm font-bold mt-1">
+                  ₹{parseFloat(item.price).toFixed(2)} x {item.quantity}
+                </p>
+              </div>
+              <div className="text-md font-bold text-gray-800">
+                ₹{(item.price * item.quantity).toFixed(2)}
+              </div>
+            </div>
+          ))}
+          <div className="text-right font-bold text-lg">
+            Total: ₹
+            {cart
+              .reduce((total, item) => total + item.price * item.quantity, 0)
+              .toFixed(2)}
+          </div>
         </div>
-      )}
-      {/* <Header/> */}
-      <h2 className="text-2xl font-bold mb-2 text-center p-8 mt-8 ">
-        Checkout
-      </h2>
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-lg mx-auto bg-white p-6 shadow-lg border rounded-lg"
-      >
-        {/* Address Selection */}
-        <div className="mb-4">
-          <Label>Address</Label>
-          <Select
-            value={form.address_id}
-            onValueChange={(value) => handleChange("address_id", value)}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select Address" />
-            </SelectTrigger>
-            <SelectContent className="bg-white border border-gray-300 shadow-lg rounded-md">
-              {addresses.map((address) => (
-                <SelectItem
-                  key={address.id}
-                  value={address.id.toString()}
-                  className="hover:bg-gray-100" // Optional: adds hover effect
-                >
-                  {address.shortname}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          {errors.address_id && (
-            <p className="text-red-500 text-sm">{errors.address_id}</p>
-          )}
-        </div>
-
-        {/* Mobile Number */}
-        <div className="mb-4">
-          <Label>Mobile Number</Label>
-          <Input
-            type="text"
-            placeholder="Enter your 10-digit mobile number"
-            value={form.mobile_no}
-            onChange={(e) => handleChange("mobile_no", e.target.value)}
-          />
-          {errors.mobile_no && (
-            <p className="text-red-500 text-sm">{errors.mobile_no}</p>
-          )}
-        </div>
-
-        {/* Note (Optional) */}
-        <div className="mb-4">
-          <Label>Note (Optional)</Label>
-          <Input
-            type="text"
-            placeholder="Add a note for the delivery (optional)"
-            value={form.note}
-            onChange={(e) => handleChange("note", e.target.value)}
-          />
-        </div>
-
-        <Separator className="my-4" />
-
-        {/* Submit Button */}
-        <Button
-          type="submit"
-          className="w-full bg-primary text-white hover:bg-primary/90"
+  
+        {/* Checkout Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-lg mx-auto bg-white p-6 shadow-lg border rounded-lg"
         >
-          Place Order
-        </Button>
-      </form>
-    </div>
+          {/* Address Selection */}
+          <div className="mb-4">
+            <Label>Address</Label>
+            <Select
+              value={form.address_id}
+              onValueChange={(value) => handleChange("address_id", value)}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select Address" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border border-gray-300 shadow-lg rounded-md">
+                {addresses.map((address) => (
+                  <SelectItem
+                    key={address.id}
+                    value={address.id.toString()}
+                    className="hover:bg-gray-100"
+                  >
+                    {address.shortname}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.address_id && (
+              <p className="text-red-500 text-sm">{errors.address_id}</p>
+            )}
+          </div>
+  
+          {/* Mobile Number */}
+          <div className="mb-4">
+            <Label>Mobile Number</Label>
+            <Input
+              type="text"
+              placeholder="Enter your 10-digit mobile number"
+              value={form.mobile_no}
+              onChange={(e) => handleChange("mobile_no", e.target.value)}
+            />
+            {errors.mobile_no && (
+              <p className="text-red-500 text-sm">{errors.mobile_no}</p>
+            )}
+          </div>
+  
+          {/* Note (Optional) */}
+          <div className="mb-4">
+            <Label>Note (Optional)</Label>
+            <Input
+              type="text"
+              placeholder="Add a note for the delivery (optional)"
+              value={form.note}
+              onChange={(e) => handleChange("note", e.target.value)}
+            />
+          </div>
+  
+          <Separator className="my-4" />
+  
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            className="w-full bg-primary text-white hover:bg-primary/90"
+          >
+            Place Order
+          </Button>
+        </form>
+      </div>
+    </>
   );
+  
 };
 
 export default Checkout;
