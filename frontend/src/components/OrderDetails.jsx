@@ -62,11 +62,22 @@ function OrderDetails() {
   const { toast } = useToast();
   // Filters state
   const [date, setDate] = useState();
+  const [currOrder, setcurrOrder] = useState(null);
   const [shift, setShift] = useState("");
   const [status, setStatus] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOrder, setIsOrder] = useState(true);
   const [flag, setflag] = useState(true);
+
+  useEffect(() => {
+    getDeliveryBoys().then((resp) => {
+      // console.log(resp.data);
+      const d = resp.data;
+      // console.log('ddd',d);
+      setDeliveryBoys([...d]);
+    });
+  }, []);
+
   useEffect(() => {
     const params = {};
     params.orderdate = new Date().toISOString().slice(0, 10);
@@ -78,8 +89,15 @@ function OrderDetails() {
     if (params.status === "") {
       // delete params.status;
     }
+    // Update state with the extracted query parameters
+    setDate(params.orderdate);
+    setShift(params.shift);
+    setStatus(params.status);
+    setIsOrder(true);
     // setSearchParams(params);
     setIsLoading(true);
+    console.log('gg');
+    console.log(params);
     getOrders(params)
       .then((res) => {
         // console.log(res.data);
@@ -118,62 +136,6 @@ function OrderDetails() {
         setIsLoading(false);
       });
   }, [flag]);
-
-  useEffect(() => {
-    getDeliveryBoys().then((resp) => {
-      // console.log(resp.data);
-      const d = resp.data;
-      // console.log('ddd',d);
-      setDeliveryBoys([...d]);
-    });
-  }, []);
-
-  useEffect(() => {
-    // Extract query parameters from the URL
-    const dateParam = searchParams.get("orderdate");
-    const deliveryDateParam = searchParams.get("deliverydate");
-    const shiftParam = searchParams.get("shift");
-    const statusParam = searchParams.get("status");
-    const isOrderParam = searchParams.get("isorder");
-
-    // Update state with the extracted query parameters
-    setDate(dateParam ? new Date(dateParam) : new Date());
-    setShift(shiftParam || "Lunch");
-    setStatus(statusParam || "");
-    setIsOrder(isOrderParam === "true");
-
-    // Prepare params for the API call
-    const params = {
-      orderdate: dateParam || new Date().toISOString().slice(0, 10),
-      deliverydate: deliveryDateParam || new Date().toISOString().slice(0, 10),
-      shift: shiftParam || "Lunch",
-      status: statusParam !== "all" ? statusParam : undefined,
-      isorder: isOrderParam === "true",
-    };
-
-    if (!params.status) {
-      delete params.status; // Remove status filter if it's empty or not needed
-    }
-
-    setIsLoading(true);
-
-    // Fetch orders based on query params
-    getOrders(params)
-      .then((res) => {
-        setOrders(res.orders);
-        setcurrentItems(sliceItems(res.orders, currentPage, itemsPerPage));
-      })
-      .catch((err) => {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: err.response?.data?.message || "Failed to fetch orders.",
-        });
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [searchParams]); // Run whenever searchParams changes
 
   const applyFilters = () => {
     const params = {
@@ -236,21 +198,6 @@ function OrderDetails() {
 
   const totalPages = Math.ceil(orders.length / itemsPerPage);
 
-  // const currentItems = orders.slice(
-  //   (currentPage - 1) * itemsPerPage,
-  //   currentPage * itemsPerPage
-  // );
-
-  const handleSelectAllRows = (checked) => {
-    setSelectedRows(checked ? orders.map((order) => order.id) : []);
-  };
-
-  const handleAssignDeliveryBox = () => {
-    console.log(`Assigning delivery box to orders:`, selectedRows);
-    setIsModalOpen(false);
-    setSelectedRows([]);
-  };
-
   const handleToggleGroupByAddress = (checked) => {
     // console.log("Toggling group by address to:", checked); // Debugging output
     setIsGroupedByAddress(checked);
@@ -258,6 +205,15 @@ function OrderDetails() {
 
   const handleToggleDeliveryOrder = (checked) => {
     setIsOrder(checked);
+  };
+
+  const handleViewDetail = (menu) => {
+    console.log(menu);
+    setcurrOrder(menu);
+  };
+
+  const handleCloseDetail = () => {
+    setcurrOrder(null);
   };
 
   const handleAssignOrders = () => {
@@ -277,10 +233,6 @@ function OrderDetails() {
   };
 
   const assignDeliveryBoy = (deliveryBoyId) => {
-    // console.log(
-    //   `Assigning orders ${selectedRows} to delivery boy ${deliveryBoyId}`
-    // );
-    // Here you would call an API to assign the orders, then close the modal
     const assign = {
       orderIds: selectedRows,
       delivery_boy_id: deliveryBoyId,
@@ -316,8 +268,6 @@ function OrderDetails() {
     done: "Delivered",
     unexpected: "Cancelled",
   };
-
-  console.log(date, shift, status, isOrder);
 
   return (
     <div className="container mx-auto p-10 h-screen overflow-auto">
@@ -451,14 +401,7 @@ function OrderDetails() {
 
         {/* Hello */}
       </div>
-
-      {/* ... Filter UI setup ... */}
-
-      {/* Table UI here */}
-      {/* Table to display currentItems based on pagination */}
       <div className="bg-white p-4 rounded-lg shadow">
-        {/* Assign Orders Button */}
-        {/* Assign Orders Button */}
         <Button
           onClick={handleAssignOrders}
           disabled={selectedRows.length === 0}
@@ -504,6 +447,89 @@ function OrderDetails() {
             </DialogContent>
           </Dialog>
         )}
+
+        {/* [
+    {
+        "id": 8,
+        "date": "2024-11-20",
+        "photo_url": "http://tiffinbackend.zikasha.com/uploads/1732119305032-78818118-download (2).jpg",
+        "isPublished": true,
+        "shift": "Lunch",
+        "status": "Available",
+        "price": 150,
+        "description": "This is description",
+        "variant": "Chinese",
+        "menuItem": "Noddles Manchurian Salad Thumps Up",
+        "quantity": 1,
+        "itemTotal": 150
+    }
+] */}
+
+        {currOrder && (
+          <Dialog open={currOrder !== null} onOpenChange={setcurrOrder}>
+            <DialogOverlay className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" />
+            <DialogContent className="bg-white p-6 rounded-lg shadow-lg max-w-4xl w-full">
+                <h2 className="text-xl font-semibold text-gray-700 mb-4">
+                  Order Summary
+                </h2>
+                <div className="space-y-4">
+                  {currOrder.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex items-center border border-gray-300 shadow-sm rounded-lg p-4 bg-white"
+                    >
+                      <img
+                        src={item.photo_url}
+                        alt={item.variant}
+                        className="w-16 h-16 object-cover rounded-md"
+                      />
+                      <div className="ml-4 flex-1">
+                        <div className="flex justify-between items-center">
+                          <p className="text-base font-semibold text-gray-800">
+                            {item.variant}
+                          </p>
+                          <p className="text-base font-medium text-gray-700">
+                            ₹{item.price}
+                          </p>
+                        </div>
+                        <p className="text-sm text-gray-500">
+                          {item.description}
+                        </p>
+                        <p className="text-sm text-gray-500">{item.menuItem}</p>
+                        <p className="text-sm text-gray-500">
+                          Quantity: {item.quantity}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 p-4 border-t border-gray-300">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      Grand Total:
+                    </h3>
+                    <p className="text-lg font-bold text-gray-800">
+                      ₹
+                      {currOrder.reduce(
+                        (total, item) => total + item.price * item.quantity,
+                        0
+                      )}
+                    </p>
+                  </div>
+                </div>
+
+
+              <div className="flex justify-end mt-4">
+                <button
+                  onClick={handleCloseDetail}
+                  className="bg-gray-300 text-black p-2 rounded hover:bg-gray-400 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
         <Table>
           <TableHeader>
             <TableRow>
@@ -516,13 +542,14 @@ function OrderDetails() {
               <TableHead as="th">Assigned To</TableHead>
               <TableHead as="th">Shift</TableHead>
               <TableHead as="th">Total Amount</TableHead>
+              <TableHead as="th">Details</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {currentItems.map((order) => (
               <TableRow key={order.id}>
                 <TableCell>
-                  {['pending','isAssigned'].includes(order.status) ? (
+                  {["pending", "isAssigned"].includes(order.status) ? (
                     <Checkbox
                       checked={selectedRows.includes(order.id)}
                       onCheckedChange={() => handleRowSelection(order.id)}
@@ -545,11 +572,23 @@ function OrderDetails() {
                   {new Date(order.deliveryDate).toLocaleDateString()}
                 </TableCell>
                 <TableCell>{statusFormat[order.status]}</TableCell>
-                <TableCell>{
-                  order.status!='pending' ? <span>{order.deliveryBoy.fullName }</span>: '-'
-                  }</TableCell>
+                <TableCell>
+                  {order.status != "pending" ? (
+                    <span>{order.deliveryBoy.fullName}</span>
+                  ) : (
+                    "-"
+                  )}
+                </TableCell>
                 <TableCell>{order.shift}</TableCell>
                 <TableCell>₹ {(+order.totalAmount).toFixed(2)}</TableCell>
+                <TableCell>
+                  <button
+                    onClick={() => handleViewDetail(order.menus)}
+                    className=" px-3 rounded-lg text-white hover:bg-primary/80 py-2 bg-primary"
+                  >
+                    Details
+                  </button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -564,20 +603,6 @@ function OrderDetails() {
           {selectedRows.length} of {orders.length} rows selected
         </div>
         <div className="flex items-center gap-2">
-          {/* Page size selector */}
-          {/* <Select
-            value={itemsPerPage.toString()}
-            onValueChange={(value) => setItemsPerPage(parseInt(value))}
-            className="bg-white"
-          >
-            <SelectTrigger>{itemsPerPage} per page</SelectTrigger>
-            <SelectContent>
-              <SelectItem value="10">10</SelectItem>
-              <SelectItem value="20">20</SelectItem>
-              <SelectItem value="50">50</SelectItem>
-            </SelectContent>
-          </Select> */}
-
           <div className="flex items-center gap-2">
             <span className="whitespace-nowrap">Rows per page</span>
             <Select
@@ -594,45 +619,6 @@ function OrderDetails() {
               </SelectContent>
             </Select>
           </div>
-
-          {/* Pagination buttons */}
-          {/* <div className="flex items-center gap-2">
-            <Button
-              onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-              className="bg-white"
-            >
-              <ChevronsLeftIcon className="w-5 h-5" />
-            </Button>
-            <Button
-              onClick={() =>
-                setCurrentPage((current) => Math.max(1, current - 1))
-              }
-              disabled={currentPage === 1}
-              className="bg-white"
-            >
-              <ChevronLeftIcon className="w-5 h-5" />
-            </Button>
-            <span className="w-24">
-              Page {currentPage} of {totalPages}
-            </span>
-            <Button
-              onClick={() =>
-                setCurrentPage((current) => Math.min(totalPages, current + 1))
-              }
-              disabled={currentPage === totalPages}
-              className="bg-white"
-            >
-              <ChevronRightIcon className="w-5 h-5" />
-            </Button>
-            <Button
-              onClick={() => setCurrentPage(totalPages)}
-              disabled={currentPage === totalPages}
-              className="bg-white"
-            >
-              <ChevronsRightIcon className="w-5 h-5" />
-            </Button>
-          </div> */}
 
           {/* Pagination buttons */}
           <div className="flex gap-1">
@@ -682,12 +668,6 @@ function OrderDetails() {
         </div>
       </div>
       {/* ... Pagination setup ... */}
-
-      {/* Dialog for assigning delivery box */}
-      {/* Assuming Dialog, DialogContent, etc. are correctly imported */}
-      <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {/* Dialog content here */}
-      </Dialog>
     </div>
   );
 }
