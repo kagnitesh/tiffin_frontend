@@ -7,7 +7,7 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#191919] text-white py-8 px-10">
+    <div id="footer" className="bg-[#191919] text-white py-8 px-10">
       <div className="container">
         <div className="flex flex-col gap-6 md:flex-row justify-between items-center md:items-start">
           <div className="flex items-center space-x-4">

@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast"; // Assuming toast notifications ar
 import { Separator } from "@/components/ui/separator";
 import { addOrder, getAddress, initiatePayment } from "@/services/user";
 import Header from "@/components/Header";
+import Footer from "./Footer";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -37,8 +38,6 @@ const Checkout = () => {
     }
   }, [cart, navigate]);
 
-
-
   // Form state
   const [form, setForm] = useState({
     address_id: "",
@@ -61,6 +60,7 @@ const Checkout = () => {
   };
 
   // Validate the form
+  // Validate the form
   const validateForm = () => {
     const newErrors = {};
 
@@ -75,6 +75,11 @@ const Checkout = () => {
         "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.";
     }
 
+    // Validate full delivery address
+    if (!form.note) {
+      newErrors.note = "Please enter your full delivery address.";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -86,26 +91,32 @@ const Checkout = () => {
       // console.log("Order Data:", form);
       setIsLoading(true);
       // console.log(cart);
-      const orderData = { ...form, menus: cart.map((c)=>{
-        return {
-          menu_id: c.id,
-          quantity: c.quantity
-        }
-      }) };
+      const orderData = {
+        ...form,
+        menus: cart.map((c) => {
+          return {
+            menu_id: c.id,
+            quantity: c.quantity,
+          };
+        }),
+      };
       // console.log("Submitting Order:", orderData);
       addOrder(orderData)
         .then((resp) => {
           console.log(resp);
           const order = resp.order;
           const { id, mobile_no, totalAmount } = order;
-          const total = cart.reduce((total, item) => total + item.price * item.quantity, 0)
-          if(totalAmount!==total){
+          const total = cart.reduce(
+            (total, item) => total + item.price * item.quantity,
+            0
+          );
+          if (totalAmount !== total) {
             toast({
               title: "Something went wrong",
               description: "There is something wrong with last order.",
               variant: "destructive",
             });
-            navigate('/')
+            navigate("/");
             return;
           }
           const paymentInfo = {
@@ -158,15 +169,18 @@ const Checkout = () => {
   return (
     <>
       <Header />
-      <div className="container mx-auto">
+      <div className="container mx-auto mb-16">
         {isLoading && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
-            <div className="loader"></div>
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-90 flex items-center justify-center z-50">
+            {/* <div className="loader"></div> */}
+            <img src="/loader.gif" alt="loader" />
           </div>
         )}
-  
-        <h2 className="text-2xl font-bold mb-2 text-center p-8 mt-8">Checkout</h2>
-  
+
+        <h2 className="text-2xl font-bold mb-2 text-center p-8 mt-8">
+          Checkout
+        </h2>
+
         {/* Cart Details */}
         <div className="max-w-lg mx-auto bg-white p-6 shadow-lg border rounded-lg mb-8">
           <h3 className="text-lg font-bold mb-4">Your Order Summary</h3>
@@ -202,7 +216,7 @@ const Checkout = () => {
               .toFixed(2)}
           </div>
         </div>
-  
+
         {/* Checkout Form */}
         <form
           onSubmit={handleSubmit}
@@ -234,7 +248,7 @@ const Checkout = () => {
               <p className="text-red-500 text-sm">{errors.address_id}</p>
             )}
           </div>
-  
+
           {/* Mobile Number */}
           <div className="mb-4">
             <Label>Mobile Number</Label>
@@ -248,20 +262,23 @@ const Checkout = () => {
               <p className="text-red-500 text-sm">{errors.mobile_no}</p>
             )}
           </div>
-  
+
           {/* Note (Optional) */}
           <div className="mb-4">
-            <Label>Note (Optional)</Label>
+            <Label>Address</Label>
             <Input
               type="text"
-              placeholder="Add a note for the delivery (optional)"
+              placeholder="Mention House no, Area, Locality and Pincode"
               value={form.note}
               onChange={(e) => handleChange("note", e.target.value)}
             />
+            {errors.note && (
+              <p className="text-red-500 text-sm">{errors.note}</p>
+            )}
           </div>
-  
+
           <Separator className="my-4" />
-  
+
           {/* Submit Button */}
           <Button
             type="submit"
@@ -271,9 +288,9 @@ const Checkout = () => {
           </Button>
         </form>
       </div>
+      <Footer />
     </>
   );
-  
 };
 
 export default Checkout;

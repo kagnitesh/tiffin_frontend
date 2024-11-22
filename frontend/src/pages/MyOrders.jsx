@@ -97,7 +97,7 @@ const MyOrders = () => {
             </div>
             <div className="text-right">
               <p className="text-lg font-semibold text-teal-600">
-                ₹{order.totalAmount.toFixed(2)}
+                ₹{(+order.totalAmount).toFixed(2)}
               </p>
             </div>
           </div>
@@ -108,12 +108,12 @@ const MyOrders = () => {
                 <p className="text-sm font-semibold">{menu.variant}</p>
                 <p className="text-xs">{menu.description}</p>
                 <p className="text-xs">
-                  <strong>Items:</strong> {menu.menu_items.join(", ")}
+                  <strong>Items:</strong> {(menu.menu_items??[]).join(", ")}
                 </p>
                 <div className="flex justify-between items-center">
                   <p className="text-xs">Quantity: {menu.quantity}</p>
                   <p className="text-xs">
-                    Item Total: ₹{menu.itemTotal.toFixed(2)}
+                    Item Total: ₹{(+menu.itemTotal).toFixed(2)}
                   </p>
                 </div>
               </div>

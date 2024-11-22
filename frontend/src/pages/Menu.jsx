@@ -26,6 +26,8 @@ const Menu = () => {
   const [isLunch, setIsLunch] = useState(true); // State for controlling Lunch/Dinner switch
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(true); // State for loading indicator
+
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
@@ -33,6 +35,7 @@ const Menu = () => {
   dayAfterTomorrow.setDate(today.getDate() + 2);
 
   useEffect(() => {
+    setIsLoading(true); // Start loading
     getMenu()
       .then((res) => {
         setMenus(res.menus);
@@ -52,7 +55,8 @@ const Menu = () => {
           )
         );
       })
-      .catch((err) => console.error("Error fetching menus:", err));
+      .catch((err) => console.error("Error fetching menus:", err))
+      .finally(() => setIsLoading(false)); // Stop loading
   }, []);
 
   useEffect(() => {
@@ -204,6 +208,15 @@ const Menu = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
+      {isLoading && (
+        // Full-screen overlay with loading indicator
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50">
+          {/* <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+           */}
+           <img src="/loader.gif" alt="Loader" />
+        </div>
+      )}
+
       <main className="container mx-auto px-4 py-8 flex-grow">
         <h2 className="text-2xl font-bold mb-6 text-center">Available Menus</h2>
 
@@ -252,13 +265,17 @@ const Menu = () => {
       </main>
 
       {/* Floating Button for Checkout */}
+
       {cart.length > 0 && (
+        <div className=" flex justify-end px-8 mb-6">
         <Button
-          className="fixed bottom-8 right-8 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 p-4"
+          // className="fixed bottom-8 right-8 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 p-4"
+          className=" bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 p-4"
           onClick={() => navigate("/checkout", { state: { cart } })}
         >
           <ShoppingCart className="w-6 h-6" /> Order Now
         </Button>
+        </div>
       )}
 
       <Footer />
