@@ -15,6 +15,7 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import Animation from "@/components/Animation";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
@@ -210,10 +211,11 @@ const Menu = () => {
 
       {isLoading && (
         // Full-screen overlay with loading indicator
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           {/* <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
            */}
-           <img src="/loader.gif" alt="Loader" />
+           {/* <img src="/loader.gif" alt="Loader" /> */}
+           <Animation/>
         </div>
       )}
 

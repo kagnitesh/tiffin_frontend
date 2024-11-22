@@ -21,6 +21,7 @@ import {
 import { getMyOrder } from "@/services/user";
 import { Tooltip, TooltipProvider } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
+import Animation from "@/components/Animation";
 
 const MyOrders = () => {
   const [mobile, setMobile] = useState("");
@@ -165,7 +166,8 @@ const MyOrders = () => {
     <TooltipProvider>
       {isLoading && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="loader"></div>
+          {/* <img src="/loader.gif" alt="loader" /> */}
+          <Animation/>
         </div>
       )}
       <Header />

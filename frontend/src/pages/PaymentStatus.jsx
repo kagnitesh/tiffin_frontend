@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { verifyPayment } from "@/services/user";
+import Animation from "@/components/Animation";
 
 export default function PaymentStatus() {
   const { transactionId } = useParams();
@@ -75,7 +76,8 @@ export default function PaymentStatus() {
       {isLoading ? (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
           {/* <div className="loader">Loading...</div> */}
-           <img src="/loader.gif" alt="loader" />
+           {/* <img src="/loader.gif" alt="loader" /> */}
+           <Animation/>
         </div>
       ) : (
         <div className="p-6 max-w-sm w-full bg-white shadow-md rounded-lg border border-gray-200">

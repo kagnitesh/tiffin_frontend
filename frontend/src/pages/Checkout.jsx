@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { addOrder, getAddress, initiatePayment } from "@/services/user";
 import Header from "@/components/Header";
 import Footer from "./Footer";
+import Animation from "@/components/Animation";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -171,9 +172,10 @@ const Checkout = () => {
       <Header />
       <div className="container mx-auto mb-16">
         {isLoading && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-90 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
             {/* <div className="loader"></div> */}
-            <img src="/loader.gif" alt="loader" />
+            {/* <img src="/loader.gif" alt="loader" /> */}
+            <Animation/>
           </div>
         )}
 
