@@ -36,8 +36,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className=" flex flex-col justify-center items-center gap-8">
-            <div>Contact: +1 (213) 776 24 10</div>
+          <div className=" flex flex-col justify-center items-center gap-2">
+            <div>Contact : +91 88497 13343</div>
+            <div>Email : dailydosetiffin2022@gmail.com</div>
             {/* <div className="flex items-center space-x-2 bg-gray-800 p-2 rounded-md">
               <input
                 type="text"
