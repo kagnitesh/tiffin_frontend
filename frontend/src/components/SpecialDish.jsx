@@ -15,7 +15,7 @@ export default function SpecialDish({ className }) {
                         Special Dish of <span className='special-font text-primary italic'>Lunch</span> <br/>
                         with <span className='special-font text-primary italic'>Healthy Ingredients</span> </h1>
                     
-                    <p className="text-sm md:text-lg text-gray-400 mb-6 leading-5">Serving North-Indian, South-Indian and desi-Chinese cuisines, choose from Vegetarian and Non-Vegetarian meal options.</p>
+                    <p className="text-sm md:text-lg text-gray-400 mb-6 leading-5">Serving North-Indian, South-Indian and desi-Chinese cuisines, choose from Vegetarian meal options.</p>
                     
                     <div className="flex gap-4 mb-2">
                         <NavLink to="/menu" className="btn-order md:text-white text-center w-full md:w-auto">
