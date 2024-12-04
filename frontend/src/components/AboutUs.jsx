@@ -22,9 +22,11 @@ export default function AboutUs() {
           {/* us */}
         </h1>
         <p className=" text-sm md:text-md text-gray-600 mb-6">
-        24Seven is the one-stop-shop for all customer needs, whatever the time of day or night. Customers can find the best global brands on the shelves to meet their daily needs like groceries, snacks, a wide variety of beverages, personal care products, and even Colorbar - our own brand of premium cosmetics. The ready-to-eat food counters feature the best quality of local & international cuisines, made within our very own state-of-the-art central kitchen. our own brand of premium cosmetics.
+        We are a team of passionate food lovers who are committed to providing our customers with the best possible tiffin service experience. We use only the freshest ingredients and cook our food with love and care. We also offer a wide variety of dishes to choose from, so you can find something to satisfy your cravings.
         <br /><br />
-        Our dedication to providing comprehensive solutions ensures that customers not only find a diverse selection of products but also have access to a suite of services that cater to their varied needs. From essential tasks to indulgent extras, we pride ourselves on being more than just a shopping destination - we are a hub of convenience and innovation. 
+        We are based in Ahmedabad, Gujarat. We offer a variety of subscription plans to suit your needs, and we also offer one-time orders.
+        <br /><br />
+        We are committed to providing our customers with excellent service. We are always available to answer your questions and help you with your order.
         </p>
         <div className="flex gap-4 mb-6">
           <button className="btn-order">Get Started</button>
