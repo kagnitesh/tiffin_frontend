@@ -11,8 +11,7 @@ const SpecialDishSection = ( {className} ) => {
   const description =
     "The state-of-the-art facility has automated machinery, is installed with rust-free pipelines and faucets and uses only RO treated water.";
 
-  return (
-    <>
+  return (    
       <div className={className}>
         <div className="pb-28 bg-primary pt-20">
           <div className="container mx-auto px-4 py-8">
@@ -56,7 +55,7 @@ const SpecialDishSection = ( {className} ) => {
           </div>
         </div>
       </div>
-    </>
+
   );
 };
 
