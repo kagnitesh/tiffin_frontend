@@ -23,7 +23,7 @@ const SpecialDishSection = ( {className} ) => {
           <div className="flex md:grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 xl:gap-10 overflow-x-auto md:overflow-visible mx-0 md:mx-16 lg:mx-16 xl:mx-56 -mt-24">
             <div className="">
               <ThaliCard
-                title="Dashera Special"
+                title="Dashera"
                 price="₹ 104"
                 imageSrc={dasheraThaliPic}
                 ratingCount={4}
@@ -31,7 +31,7 @@ const SpecialDishSection = ( {className} ) => {
             </div>
             <div className="">
               <ThaliCard
-                title="Ganesh Chaturthi Special"
+                title="Chaturthi"
                 price="₹ 104"
                 imageSrc={GaneshChaturthiPic}
                 ratingCount={3}
@@ -39,7 +39,7 @@ const SpecialDishSection = ( {className} ) => {
             </div>
             <div className="">
               <ThaliCard
-                title="Makarsankranti Special"
+                title="Makarsankranti"
                 price="₹ 104"
                 imageSrc={makarsankrantiPic}
                 ratingCount={5}
@@ -47,7 +47,7 @@ const SpecialDishSection = ( {className} ) => {
             </div>
             <div className="">
               <ThaliCard
-                title="Navaratri Special"
+                title="Navaratri"
                 price="₹ 104"
                 imageSrc={navaratriPic}
                 ratingCount={5}
