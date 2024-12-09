@@ -38,7 +38,7 @@ const SpecialDishSection = ( {className} ) => {
             </div>
             <div className="">
               <ThaliCard
-                title="Makarsankranti"
+                title="Uttarayan"
                 price="₹ 104"
                 imageSrc={makarsankrantiPic}
                 ratingCount={5}
