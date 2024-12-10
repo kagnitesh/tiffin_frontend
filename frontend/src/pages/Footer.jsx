@@ -7,7 +7,7 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <div id="footer" className="bg-[#191919] text-white py-8 px-10">
+    <div id="footer" className="bg-[#191919] text-white py-8 px-6">
       <div className="container">
         <div className="flex flex-col gap-6 md:flex-row justify-between items-center md:items-start">
           <div className="flex items-center space-x-4">
@@ -31,7 +31,7 @@ export default function Footer() {
               <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
             </div>
             <div className="text-center text-sm py-2 hidden md:block">
-              <p className="tracking-wide text-slate-400">Copyright 2024-25. All rights reserved | Policy Privacy</p>
+              <p className="tracking-wide text-slate-400">Copyright 2024-25. All rights reserved | Privacy Policy</p>
               <p className="mt-4 tracking-wide">Made with ❤️ by Zikasha</p>
             </div>
           </div>
