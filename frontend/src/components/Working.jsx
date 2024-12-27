@@ -12,18 +12,25 @@ export default function Working() {
 
     const testimonials = [
         {
-            name: "Marguerite Joe",
+            name: "Aayushyamaan shah Rajkot",
             role: "Customer",
-            image: "testiImg.png",
-            quote: "Continually productize compelling quality for packed with all Elated productize compelling quality.",
+            image: "testimonials/aayushyamaan-shah.png",
+            quote: "I’ve been enjoying their tiffin service for months, and it’s the best decision I’ve made! The meals are fresh, balanced, and always delivered on time. It feels like home-cooked food every day.",
+            rate:5
+        },
+        {
+            name: "Hem bhatt surat Gujarat",
+            role: "Customer",
+            image: "testimonials/hem-bhatt.png",
+            quote: "As someone with a hectic work routine, this tiffin service has been a lifesaver. No more worrying about lunch – the meals are delicious and always ready when I need them.",
             rate:4.5
         },
         {
-            name: "Hello World",
+            name: "Hitesh Kumar  Himachal Pradesh",
             role: "Customer",
-            image: "testiImg.png",
-            quote: "Continually productize compelling quality for packed with all Elated productize compelling quality.",
-            rate:2.5
+            image: "testimonials/hiteshkumar-himachal.png",
+            quote: "I love the variety and quality of the meals. It’s like having a home-cooked meal at the office every day. The service is super reliable, and I highly recommend it!",
+            rate:5
         },
         // More testimonials
     ];

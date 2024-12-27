@@ -55,7 +55,7 @@ const TestimonialSlider = ({ testimonials }) => {
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-full md:w-64 md:h-64 mb-4"
+                className="w-full md:w-64 md:h-64 mb-4 object-contain"
               />
               <div className="w-full mt-8 md:w-1/2 relative">
                 <img src="quote.png" className=" absolute -top-10" alt="" />
@@ -63,7 +63,7 @@ const TestimonialSlider = ({ testimonials }) => {
                 “{testimonial.quote}”
                 </p>
                 <div className=" flex flex-col md:flex-row gap-2 md:gap-6 md:items-center">
-                  <h5 className="text-xl md:text-3xl font-bold mt-2">
+                  <h5 className="text-xl md:text-xl font-bold mt-2">
                     {testimonial.name}
                   </h5>
                   <div className=" flex ">{renderStars(+testimonial.rate)}</div>
