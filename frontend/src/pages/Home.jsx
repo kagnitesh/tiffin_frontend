@@ -29,7 +29,7 @@ export default function Home() {
             <div className="lg:w-1/2 w-full p-4 relative">
               <img
                 className="w-full md:h-auto h-[380px] object-cover rounded-2xl"
-                src={'collaborate/bg-1.png'}
+                src={'collaborate/bg-2.png'}
                 alt="Collaborate with us"
               />
               <div className="absolute top-0 left-0 bottom-0 py-12 pl-10 w-full pr-10 md:w-2/3">
@@ -48,7 +48,7 @@ export default function Home() {
             <div className="lg:w-1/2 w-full p-4 relative">
               <img
                 className="w-full md:h-auto h-[380px] object-cover rounded-2xl"
-                src={'collaborate/bg-2.png'}
+                src={'collaborate/bg-1.png'}
                 alt="Collaborate with us"
               />
               <div className="absolute top-0 left-0 bottom-0 py-12 px-10 w-full md:w-2/3">
