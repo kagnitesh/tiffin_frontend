@@ -34,11 +34,11 @@ export default function Home() {
               />
               <div className="absolute top-0 left-0 bottom-0 py-12 pl-10 w-full pr-10 md:w-2/3">
                 <div className="flex flex-col items-start justify-center h-full">
-                  <h3 className="text-xl text-[#FFA31E]">Elevate Your</h3>
-                  <h1 className="text-4xl font-semibold mb-3 text-[#FFA31E]">Office Breaks!</h1>
-                  <p className="text-base text-white">Refresh your team with our premium tea and coffee service.</p>
+                  <h3 className="text-xl text-[#553F1C]">Elevate Your</h3>
+                  <h1 className="text-4xl font-semibold mb-3 text-[#553F1C]">Office Breaks!</h1>
+                  <p className="text-base text-[#795A28]">Refresh your team with our premium tea and coffee service.</p>
                   <Link
-                    className="rounded-full inline-block bg-[#FFA31E] text-black px-7 py-4 mt-7"
+                    className="rounded-full inline-block bg-[#795A28] text-black px-7 py-4 mt-7"
                     to={'/contact'}
                   >Contact us</Link>
                 </div>
@@ -53,11 +53,11 @@ export default function Home() {
               />
               <div className="absolute top-0 left-0 bottom-0 py-12 px-10 w-full md:w-2/3">
                 <div className="flex flex-col items-start justify-center h-full">
-                  <h3 className="text-xl text-[#553F1C]">Host the Perfect</h3>
-                  <h1 className="text-4xl font-semibold mb-3 text-[#553F1C]">Office Party!</h1>
-                  <p className="text-base text-[#795A28]">Turn your office celebrations into unforgettable experiences with our end-to-end party solutions.</p>
+                  <h3 className="text-xl text-[#FFA31E]">Host the Perfect</h3>
+                  <h1 className="text-4xl font-semibold mb-3 text-[#FFA31E]">Office Party!</h1>
+                  <p className="text-base text-white">Turn your office celebrations into unforgettable experiences with our end-to-end party solutions.</p>
                   <Link
-                    className="rounded-full inline-block bg-[#795A28] text-white px-7 py-4 mt-7"
+                    className="rounded-full inline-block bg-[#FFA31E] text-white px-7 py-4 mt-7"
                     to={'/contact'}
                   >Contact us</Link>
                 </div>
