@@ -38,7 +38,7 @@ export default function Home() {
                   <h1 className="text-4xl font-semibold mb-3 text-[#553F1C]">Office Breaks!</h1>
                   <p className="text-base text-[#795A28]">Refresh your team with our premium tea and coffee service.</p>
                   <Link
-                    className="rounded-full inline-block bg-[#795A28] text-black px-7 py-4 mt-7"
+                    className="rounded-full inline-block bg-[#FFA31E] text-black px-7 py-4 mt-7"
                     to={'/contact'}
                   >Contact us</Link>
                 </div>
@@ -57,7 +57,7 @@ export default function Home() {
                   <h1 className="text-4xl font-semibold mb-3 text-[#FFA31E]">Office Party!</h1>
                   <p className="text-base text-white">Turn your office celebrations into unforgettable experiences with our end-to-end party solutions.</p>
                   <Link
-                    className="rounded-full inline-block bg-[#FFA31E] text-white px-7 py-4 mt-7"
+                    className="rounded-full inline-block bg-[#795A28] text-white px-7 py-4 mt-7"
                     to={'/contact'}
                   >Contact us</Link>
                 </div>
