@@ -60,7 +60,7 @@ export default function Contact() {
     }
 
     // Create the mailto link
-    const mailtoLink = `mailto:nirmalshah20519@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:dailydosetiffin2022@gmail.com?subject=${subject}&body=${body}`;
 
     // Open the mailto link in the same tab
     window.location.href = mailtoLink;
@@ -76,7 +76,7 @@ export default function Contact() {
     if (formData.contactType === "feedback") {
       body = `Rated ${formData.rating} out of 5\n\n` + body;
     }
-    return `mailto:nirmalshah20519@gmail.com?subject=${subject}&body=${body}`;
+    return `mailto:dailydosetiffin2022@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (

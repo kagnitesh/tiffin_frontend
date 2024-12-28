@@ -26,13 +26,13 @@ export default function Home() {
           <SectionHeader4 text={colaborateContent} color={"white"} textColor={"#111111"} />
 
           <div className="flex flex-wrap justify-center container mx-auto mt-6">
-            <div className="lg:w-1/2 w-full p-4 relative">
+            <div className="lg:w-1/2 w-full my-4 lg:p-4 relative rounded-2xl">
               <img
                 className="w-full md:h-auto h-[380px] object-cover rounded-2xl"
                 src={'collaborate/bg-1.png'}
                 alt="Collaborate with us"
               />
-              <div className="absolute top-0 left-0 bottom-0 py-12 pl-10 w-full pr-10 md:w-2/3">
+              <div className="absolute top-0 left-0 bottom-0 py-12 pl-10 w-full pr-10 md:w-2/3 rounded-2xl bg-black bg-opacity-30 md:bg-opacity-0">
                 <div className="flex flex-col items-start justify-center h-full">
                   <h3 className="text-xl text-[#FFA31E]">Host the Perfect</h3>
                   <h1 className="text-4xl font-semibold mb-3 text-[#FFA31E]">Office Party!</h1>
@@ -45,13 +45,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:w-1/2 w-full p-4 relative">
+            <div className="lg:w-1/2 w-full my-4 lg:p-4 relative rounded-2xl">
               <img
                 className="w-full md:h-auto h-[380px] object-cover rounded-2xl"
                 src={'collaborate/bg-2.png'}
                 alt="Collaborate with us"
               />
-              <div className="absolute top-0 left-0 bottom-0 py-12 px-10 w-full md:w-2/3">
+              <div className="absolute top-0 left-0 bottom-0 py-12 px-10 w-full md:w-2/3 rounded-2xl bg-white bg-opacity-30 md:bg-opacity-0">
                 <div className="flex flex-col items-start justify-center h-full">
                   <h3 className="text-xl text-[#553F1C]">Elevate Your</h3>
                   <h1 className="text-4xl font-semibold mb-3 text-[#553F1C]">Office Breaks!</h1>
@@ -64,13 +64,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:w-1/2 w-full p-4 relative">
+            <div className="lg:w-1/2 w-full my-4 lg:p-4 relative rounded-2xl">
               <img
                 className="w-full md:h-auto h-[380px] object-cover rounded-2xl"
                 src={'collaborate/bg-3.png'}
                 alt="Collaborate with us"
               />
-              <div className="absolute top-0 left-0 bottom-0 py-12 pl-10 w-full pr-10 md:w-2/3">
+              <div className="absolute top-0 left-0 bottom-0 py-12 pl-10 w-full pr-10 md:w-2/3 rounded-2xl bg-black bg-opacity-30 md:bg-opacity-0">
                 <div className="flex flex-col items-start justify-center h-full">
                   <h3 className="text-xl text-[#FFA31E]">Collaborate with Us for</h3>
                   <h1 className="text-4xl font-semibold mb-3 text-[#FFA31E]">Perfect Tiffins!</h1>
