@@ -86,7 +86,7 @@ export default function Home() {
         </div>
 
         <div style={{background: `url('/banner.png')`, backgroundSize: 'cover'}} className="container rounded-xl my-20">
-          <div className="p-20">
+          <div className="lg:p-20 py-10 px-4">
             <h1 className="text-white text-4xl mb-3">The fastest</h1>
             <h1 className="text-white text-5xl font-semibold mb-3">Delivery <span className="text-primary">Food</span></h1>
             <Link
