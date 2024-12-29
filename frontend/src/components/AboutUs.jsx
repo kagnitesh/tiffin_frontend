@@ -34,13 +34,11 @@ export default function AboutUs() {
           </div>
 
 
-          <div className="flex gap-4 mt-4">
-            <a href="/menu" className="btn-order">Get Started</a>
-          </div>
+          
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center px-8 md:px-16 pt-8 pb-16 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center px-8 md:px-16 pt-8 gap-4">
         <div className="prose flex-1">
           <h3>Our Mission</h3>
           <p>Our mission is to provide our customers with delicious, healthy, and affordable tiffin services. We want to make it easy for people to eat healthy meals on the go.</p>
@@ -64,10 +62,16 @@ export default function AboutUs() {
           </p>
           <p>
             You can reach us at:<br />
-            Phone: <a href="tel:+91 8849713343">+91 8849713343</a>
+            Phone: <a href="tel:+91 8849713343">+91 8849713343</a><br />
+            Email: <a href="mailto:dailydosetiffin2022@gmail.com">dailydosetiffin2022@gmail.com</a>
           </p>
         </div>
+          
       </div>
+      <div className="flex gap-4 mt-4 px-8 md:px-16 pt-8 pb-16 gap-4">
+            <a href="/menu" className="btn-order">Get Started</a>
+      </div>
+      
 
     </>
   );
