@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+const url = import.meta.env.VITE_API_URL;
 export default function Contact() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -93,7 +93,7 @@ export default function Contact() {
     try {
       // Send the POST request to the backend API
       const response = await axios.post(
-        '${import.meta.env.VITE_API_URL}/api/send-email', // Replace with your API endpoint
+        url + '/api/send-email', // Replace with your API endpoint
         payload,
         {
           headers: {
