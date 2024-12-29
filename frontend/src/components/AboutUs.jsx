@@ -48,10 +48,10 @@ export default function AboutUs() {
           <h3>Our Values</h3>
           <p>
               We are committed to the following values:<br />
-              Quality: We use only the freshest ingredients and cook our food with care.
-              Service: We provide excellent customer service.
-              Affordability: We offer our services at a competitive price.
-              Sustainability: We are committed to sustainable practices.
+              <b>Quality:</b> We use only the freshest ingredients and cook our food with care.<br />
+              <b>Service:</b> We provide excellent customer service.<br />
+              <b>Affordability:</b> We offer our services at a competitive price.<br />
+              <b>Sustainability:</b> We are committed to sustainable practices.<br />
           </p>
         </div>
         <div className="prose flex-1">
@@ -64,7 +64,7 @@ export default function AboutUs() {
           </p>
           <p>
             You can reach us at:<br />
-            Phone: <a href="tel:+91 9876543210">+91 9876543210</a>
+            Phone: <a href="tel:+91 8849713343">+91 8849713343</a>
           </p>
         </div>
       </div>

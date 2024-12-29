@@ -6,7 +6,7 @@ import TestimonialSlider from "./TestimonialSlider";
 
 export default function Working() {
   const text =
-    "The state-of-the art facility has automated machinery, is installed with rust-free pipelines and faucets and uses only RO treated water.";
+    "Open your phone, book your tiffin, and we'll deliver it to you on time—fresh, healthy, and hassle-free!";
   const client =
     "In addition to a wide variety of products, customers can utilize a plethora of in-house services.";
 
@@ -45,17 +45,17 @@ export default function Working() {
           <SectionCard
             svgPath="SVG1.svg" // Provide the actual path
             title="Choose Option"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse luctus nec elit in vulputate."
+            content="Choose from our menu and place your order easily."
           />
           <SectionCard
             svgPath="SVG2.svg" // Provide the actual path
             title="Order In Process"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse luctus nec elit in vulputate."
+            content="Your selected tiffin is being packed and prepared for delivery."
           />
           <SectionCard
             svgPath="SVG3.svg" // Provide the actual path
             title="Delivery"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse luctus nec elit in vulputate."
+            content="Your tiffin will be delivered on time, fresh and ready to enjoy."
           />
         </div>
       </div>
