@@ -13,7 +13,18 @@ export default function Footer() {
           <div className="flex items-center space-x-4">
             <img onClick={() => navigate("/")} role="button" src={'/logo-dark.png'} className="h-12" alt="Daily Dose Logo" />
           </div>
-          <div className=" flex flex-col justify-center items-center gap-8">
+          <div className=" flex flex-col justify-center items-center gap-2">
+            <div className="flex space-x-10">
+              <Link to={"/privacy-policy"} className="hover:underline">
+                Privacy Policy
+              </Link>
+              <Link to={"/refund-policy"} className="hover:underline">
+                Refund Policy
+              </Link>
+              <Link to={"/terms-and-conditions"} className="hover:underline">
+                Terms and conditions
+              </Link>
+            </div>
             <div className="flex space-x-10">
               <Link to={"/"} className="hover:underline">
                 Home
