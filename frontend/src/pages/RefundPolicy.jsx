@@ -24,15 +24,13 @@ export function RefundPolicy() {
             1.1 Shipping and Delivery Times
           </h3>
           <p>
-            We process and ship orders within same day after receiving payment.
-            Estimated delivery times:
+             We prepare and deliver fresh tiffins with care to meet your schedule. Orders are processed and delivered on the same day or on your scheduled delivery day.
           </p>
           <ul className="list-disc ml-8">
-            <li>Domestic Orders: 3-7 business days.</li>
-            <li>International Orders: 7-21 business days</li>
-            <li>
-              Delivery times may vary depending on your location and shipping
-              carrier delays.
+            <li>Same-Day Delivery: Orders placed before 10:00 AM will be delivered on the same day.</li>
+            <li>Scheduled Delivery: You can place orders in advance and specify your preferred delivery date and time during checkout.</li>
+             <li>
+               Delivery times may vary depending on your location and other logistical factors. We will do our best to ensure timely delivery.
             </li>
           </ul>
           <h3 className="text-xl font-semibold mb-2">1.2 Shipping Fees</h3>
@@ -55,7 +53,7 @@ export function RefundPolicy() {
           <h3 className="text-xl font-semibold mb-2">2.1 Refund Eligibility</h3>
           <p>
             Refunds will be issued for eligible returned items upon receipt and
-            inspection. Refunds will be processed to the original payment method
+            inspection. Refunds will be credited to the original payment method
             within 5-10 business days.
           </p>
           <h3 className="text-xl font-semibold mb-2">
