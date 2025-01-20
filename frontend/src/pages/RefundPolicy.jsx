@@ -77,22 +77,14 @@ export function RefundPolicy() {
         <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-4">3. Cancellations</h2>
           <h3 className="text-xl font-semibold mb-2">
-            3.1 Order Cancellation by Customer
-          </h3>
-          <p>
-            You may cancel your order before it is shipped by contacting us at
-            dailydosetiffin2022@gmail.com. If the order has already been
-            shipped, it cannot be canceled.
-          </p>
-          <h3 className="text-xl font-semibold mb-2">
-            3.2 Order Cancellation by DailyDose
+            3.1 Order Cancellation by DailyDose
           </h3>
           <p>
             We reserve the right to cancel orders in the event of pricing
             errors, stock issues, or suspected fraudulent activity.
           </p>
           <h3 className="text-xl font-semibold mb-2">
-            3.3 No Return
+            3.2 No Return
           </h3>
           <p>
             once the order is placed, we will not accept any return
