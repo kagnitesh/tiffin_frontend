@@ -24,6 +24,9 @@ import About from "./pages/About";
 import ContactPage from "./pages/ContactPage";
 import MenuDetails from "./components/MenuDetails";
 import OrderDetails from "./components/OrderDetails";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import { RefundPolicy } from "./pages/RefundPolicy";
 
 function App() {
   // console.log(import.meta.env);
@@ -36,6 +39,9 @@ function App() {
         <Route path="/about-us" element={<About />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
         <Route
           path="/payment-status/:transactionId"
           element={<PaymentStatus />}

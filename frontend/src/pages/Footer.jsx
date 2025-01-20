@@ -13,7 +13,18 @@ export default function Footer() {
           <div className="flex items-center space-x-4">
             <img onClick={() => navigate("/")} role="button" src={'/logo-dark.png'} className="h-12" alt="Daily Dose Logo" />
           </div>
-          <div className=" flex flex-col justify-center items-center gap-8">
+          <div className=" flex flex-col justify-center items-center gap-2">
+            <div className="flex space-x-10">
+              <Link to={"/privacy-policy"} className="hover:underline">
+                Privacy Policy
+              </Link>
+              <Link to={"/refund-policy"} className="hover:underline">
+                Refund Policy
+              </Link>
+              <Link to={"/terms-and-conditions"} className="hover:underline">
+                Terms and conditions
+              </Link>
+            </div>
             <div className="flex space-x-10">
               <Link to={"/"} className="hover:underline">
                 Home
@@ -31,8 +42,10 @@ export default function Footer() {
               <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
             </div>
             <div className="text-center text-sm py-2 hidden md:block">
-              <p className="tracking-wide text-slate-400">Copyright 2024-25. All rights reserved | Privacy Policy</p>
-              <p className="mt-4 tracking-wide">Made with ❤️ by Zikasha</p>
+              <p className="tracking-wide text-slate-400">Copyright 2025 All rights reserved</p>
+              <p className="mt-4 tracking-wide">
+                   Made with ❤️ by <a href="https://zikasha.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Zikasha</a>
+              </p>
             </div>
           </div>
 
@@ -55,8 +68,10 @@ export default function Footer() {
 
 
         <div className="text-center text-sm py-2 mt-8 md:hidden">
-          <p className="tracking-wide text-slate-400">Copyright 2024-25. All rights reserved | Policy Privacy</p>
-          <p className="mt-4 tracking-wide">Made with ❤️ by Zikasha</p>
+          <p className="tracking-wide text-slate-400">Copyright 2025. All rights reserved</p>
+          <p className="mt-4 tracking-wide">
+                   Made with ❤️ by <a href="https://zikasha.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Zikasha</a>
+            </p>
         </div>
       </div>
     </div>
