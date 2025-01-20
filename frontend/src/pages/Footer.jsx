@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaSearch } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaSearch, FaLinkedin } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -38,7 +38,9 @@ export default function Footer() {
             </div>
             <div className="space-x-2 flex items-center">
               <FaFacebookF className="w-6 h-6" /> {/* Facebook icon */}
-              <FaTwitter className="w-6 h-6" /> {/* Twitter icon */} 
+              <a href="https://www.linkedin.com/company/105765067/admin/dashboard/" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin className="w-6 h-6" /> {/* LinkedIn icon */}
+              </a>
               <a href="https://www.instagram.com/dailydosetiffin/?igsh=MWdzeTRqcmViOG80dA%3D%3D#" target="_blank" rel="noopener noreferrer" >
                 <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
               </a>
