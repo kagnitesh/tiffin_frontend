@@ -132,6 +132,7 @@ const Checkout = () => {
               window.location.href = url;
             })
             .catch((err) => {
+              setIsLoading(false);
               console.log(err);
               toast({
                 title: "Payment Error",
@@ -139,9 +140,6 @@ const Checkout = () => {
                 variant: "destructive",
               });
             })
-            .finally(() => {
-              setIsLoading(false);
-            });
           // toast({
           //   title: "Order Submitted",
           //   description: "Your order has been placed successfully.",
@@ -151,11 +149,9 @@ const Checkout = () => {
           // navigate("/")
         })
         .catch((err) => {
+          setIsLoading(false);
           console.log(err);
         })
-        .finally(() => {
-          setIsLoading(false);
-        });
 
       // navigate("/confirmation"); // Navigate to confirmation page
     } else {
