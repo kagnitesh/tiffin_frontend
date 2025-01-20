@@ -62,7 +62,7 @@ export function RefundPolicy() {
           </p>
         </section>
 
-        <section className="mb-6">
+        {/* <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-4">
             3. Damaged or Defective Items
           </h2>
@@ -72,12 +72,12 @@ export function RefundPolicy() {
             of the damage. We will offer a replacement, exchange, or full refund
             based on the situation.
           </p>
-        </section>
+        </section> */}
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">4. Cancellations</h2>
+          <h2 className="text-2xl font-semibold mb-4">3. Cancellations</h2>
           <h3 className="text-xl font-semibold mb-2">
-            4.1 Order Cancellation by Customer
+            3.1 Order Cancellation by Customer
           </h3>
           <p>
             You may cancel your order before it is shipped by contacting us at
@@ -85,22 +85,22 @@ export function RefundPolicy() {
             shipped, it cannot be canceled.
           </p>
           <h3 className="text-xl font-semibold mb-2">
-            4.2 Order Cancellation by DailyDose
+            3.2 Order Cancellation by DailyDose
           </h3>
           <p>
             We reserve the right to cancel orders in the event of pricing
             errors, stock issues, or suspected fraudulent activity.
           </p>
           <h3 className="text-xl font-semibold mb-2">
-            4.3 No Return
+            3.3 No Return
           </h3>
           <p>
-            Once order is delivered, We can not return it.
+            once the order is placed, we will not accept any return
           </p>
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">6. Contact Us</h2>
+          <h2 className="text-2xl font-semibold mb-4">4. Contact Us</h2>
           <p>
             If you have questions about our refund policy, please email us at
             dailydosetiffin2022@gmail.com or call us at +91 88497 13343.
