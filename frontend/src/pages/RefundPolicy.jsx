@@ -24,15 +24,8 @@ export function RefundPolicy() {
             1.1 Shipping and Delivery Times
           </h3>
           <p>
-             We prepare and deliver fresh tiffins with care to meet your schedule. Orders are processed and delivered on the same day or on your scheduled delivery day.
+             We prepare and deliver fresh tiffins with care to meet your schedule. Orders are processed and delivered within 45-60 miniutes.
           </p>
-          <ul className="list-disc ml-8">
-            <li>Same-Day Delivery: Orders placed before 10:00 AM will be delivered on the same day.</li>
-            <li>Scheduled Delivery: You can place orders in advance and specify your preferred delivery date and time during checkout.</li>
-             <li>
-               Delivery times may vary depending on your location and other logistical factors. We will do our best to ensure timely delivery.
-            </li>
-          </ul>
           <h3 className="text-xl font-semibold mb-2">1.2 Shipping Fees</h3>
           <p>
             Shipping fees are calculated at checkout and depend on the delivery
