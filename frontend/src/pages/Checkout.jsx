@@ -86,7 +86,7 @@ const Checkout = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       // console.log("Order Data:", form);
@@ -102,65 +102,52 @@ const Checkout = () => {
         }),
       };
       // console.log("Submitting Order:", orderData);
-      addOrder(orderData)
+      const response = await addOrder(orderData)
+      const order = response.order;
+      const { id, mobile_no, totalAmount } = order;
+      const total = cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      if (totalAmount !== total) {
+        toast({
+          title: "Something went wrong",
+          description: "There is something wrong with last order.",
+          variant: "destructive",
+        });
+        navigate("/");
+        return;
+      }
+      const paymentInfo = {
+        orderId: id,
+        amount: totalAmount,
+        mobileNumber: mobile_no,
+      };
+      initiatePayment(paymentInfo)
         .then((resp) => {
           console.log(resp);
-          const order = resp.order;
-          const { id, mobile_no, totalAmount } = order;
-          const total = cart.reduce(
-            (total, item) => total + item.price * item.quantity,
-            0
-          );
-          if (totalAmount !== total) {
-            toast({
-              title: "Something went wrong",
-              description: "There is something wrong with last order.",
-              variant: "destructive",
-            });
-            navigate("/");
-            return;
-          }
-          const paymentInfo = {
-            orderId: id,
-            amount: totalAmount,
-            mobileNumber: mobile_no,
-          };
-          initiatePayment(paymentInfo)
-            .then((resp) => {
-              console.log(resp);
-              const { url } = resp.data;
-              window.location.href = url;
-            })
-            .catch((err) => {
-              setIsLoading(false);
-              console.log(err);
-              toast({
-                title: "Payment Error",
-                description: "Failed to initiate payment.",
-                variant: "destructive",
-              });
-            })
-          // toast({
-          //   title: "Order Submitted",
-          //   description: "Your order has been placed successfully.",
-          //   variant: "success",
-          // });
-
-          // navigate("/")
+          const { url } = resp.data;
+          window.location.href = url;
         })
         .catch((err) => {
           setIsLoading(false);
           console.log(err);
+          toast({
+            title: "Payment Error",
+            description: "Failed to initiate payment.",
+            variant: "destructive",
+          });
         })
-
-      // navigate("/confirmation"); // Navigate to confirmation page
-    } else {
-      toast({
-        title: "Form Error",
-        description: "Please fix the errors in the form.",
-        variant: "destructive",
-      });
-    }
+        .finally(() => {
+          setIsLoading(false);
+        });
+      } else {
+        toast({
+          title: "Form Error",
+          description: "Please fix the errors in the form.",
+          variant: "destructive",
+        });
+      }
   };
 
   return (
@@ -281,6 +268,7 @@ const Checkout = () => {
           <Button
             type="submit"
             className="w-full bg-primary text-white hover:bg-primary/90"
+            disable={isLoading}
           >
             Place Order
           </Button>
