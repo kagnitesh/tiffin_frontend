@@ -38,8 +38,10 @@ export default function Footer() {
             </div>
             <div className="space-x-2 flex items-center">
               <FaFacebookF className="w-6 h-6" /> {/* Facebook icon */}
-              <FaTwitter className="w-6 h-6" /> {/* Twitter icon */}
-              <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
+              <FaTwitter className="w-6 h-6" /> {/* Twitter icon */} 
+              <a href="https://www.instagram.com/dailydosetiffin/?igsh=MWdzeTRqcmViOG80dA%3D%3D#" target="_blank" rel="noopener noreferrer" >
+                <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
+              </a>
             </div>
             <div className="text-center text-sm py-2 hidden md:block">
               <p className="tracking-wide text-slate-400">Copyright 2025 All rights reserved</p>
