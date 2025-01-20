@@ -61,8 +61,7 @@ export function RefundPolicy() {
           </h3>
           <p>
             Shipping fees are non-refundable unless the return is due to our
-            error. Digital or downloadable products are non-refundable once
-            accessed or downloaded.
+            error.
           </p>
           <h3 className="text-xl font-semibold mb-2">2.3 Partial Refunds</h3>
           <p>
