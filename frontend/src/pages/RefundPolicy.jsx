@@ -13,8 +13,7 @@ export function RefundPolicy() {
           Return, Refund, and Delivery Policy
         </h1>
         <p className="mb-6">
-          At DailyDose, we are committed to providing quality products and
-          services. This policy outlines our terms for returns, refunds, and
+          At DailyDose, we are committed to providing quality food. This policy outlines our terms for returns, refunds, and
           delivery to ensure a transparent and satisfying customer experience.
         </p>
 
@@ -83,8 +82,7 @@ export function RefundPolicy() {
           <p>
             You may cancel your order before it is shipped by contacting us at
             dailydosetiffin2022@gmail.com. If the order has already been
-            shipped, it cannot be canceled, but you may return it under our
-            Return Policy.
+            shipped, it cannot be canceled.
           </p>
           <h3 className="text-xl font-semibold mb-2">
             4.2 Order Cancellation by DailyDose
@@ -92,6 +90,12 @@ export function RefundPolicy() {
           <p>
             We reserve the right to cancel orders in the event of pricing
             errors, stock issues, or suspected fraudulent activity.
+          </p>
+          <h3 className="text-xl font-semibold mb-2">
+            4.3 No Return
+          </h3>
+          <p>
+            Once order is delivered, We can not return it.
           </p>
         </section>
 
