@@ -253,6 +253,7 @@ const Checkout = () => {
             <Label>Address</Label>
             <Input
               type="text"
+              required
               placeholder="Mention House no, Area, Locality and Pincode"
               value={form.note}
               onChange={(e) => handleChange("note", e.target.value)}
