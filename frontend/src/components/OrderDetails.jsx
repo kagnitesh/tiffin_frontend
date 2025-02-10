@@ -535,6 +535,7 @@ function OrderDetails() {
             <TableRow>
               <TableHead as="th">Select/Status</TableHead>
               <TableHead as="th">Address</TableHead>
+              <TableHead as="th">Building Address</TableHead>
               <TableHead as="th">Mobile No</TableHead>
               <TableHead as="th">Order Date</TableHead>
               <TableHead as="th">Delivery Date</TableHead>
@@ -564,6 +565,7 @@ function OrderDetails() {
                   )}
                 </TableCell>
                 <TableCell>{order.address.address}</TableCell>
+                <TableCell className="max-w-[100px]">{order.note}</TableCell>
                 <TableCell>{order.mobile_no}</TableCell>
                 <TableCell>
                   {new Date(order.orderDate).toLocaleDateString()}

@@ -13,8 +13,7 @@ export function RefundPolicy() {
           Return, Refund, and Delivery Policy
         </h1>
         <p className="mb-6">
-          At DailyDose, we are committed to providing quality products and
-          services. This policy outlines our terms for returns, refunds, and
+          At DailyDose, we are committed to providing quality food. This policy outlines our terms for returns, refunds, and
           delivery to ensure a transparent and satisfying customer experience.
         </p>
 
@@ -24,17 +23,8 @@ export function RefundPolicy() {
             1.1 Shipping and Delivery Times
           </h3>
           <p>
-            We process and ship orders within same day after receiving payment.
-            Estimated delivery times:
+             We prepare and deliver fresh tiffins with care to meet your schedule. Orders are processed and delivered within 45-60 miniutes.
           </p>
-          <ul className="list-disc ml-8">
-            <li>Domestic Orders: 3-7 business days.</li>
-            <li>International Orders: 7-21 business days</li>
-            <li>
-              Delivery times may vary depending on your location and shipping
-              carrier delays.
-            </li>
-          </ul>
           <h3 className="text-xl font-semibold mb-2">1.2 Shipping Fees</h3>
           <p>
             Shipping fees are calculated at checkout and depend on the delivery
@@ -55,7 +45,7 @@ export function RefundPolicy() {
           <h3 className="text-xl font-semibold mb-2">2.1 Refund Eligibility</h3>
           <p>
             Refunds will be issued for eligible returned items upon receipt and
-            inspection. Refunds will be processed to the original payment method
+            inspection. Refunds will be credited to the original payment method
             within 5-10 business days.
           </p>
           <h3 className="text-xl font-semibold mb-2">
@@ -63,8 +53,7 @@ export function RefundPolicy() {
           </h3>
           <p>
             Shipping fees are non-refundable unless the return is due to our
-            error. Digital or downloadable products are non-refundable once
-            accessed or downloaded.
+            error.
           </p>
           <h3 className="text-xl font-semibold mb-2">2.3 Partial Refunds</h3>
           <p>
@@ -73,7 +62,7 @@ export function RefundPolicy() {
           </p>
         </section>
 
-        <section className="mb-6">
+        {/* <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-4">
             3. Damaged or Defective Items
           </h2>
@@ -83,30 +72,27 @@ export function RefundPolicy() {
             of the damage. We will offer a replacement, exchange, or full refund
             based on the situation.
           </p>
-        </section>
+        </section> */}
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">4. Cancellations</h2>
+          <h2 className="text-2xl font-semibold mb-4">3. Cancellations</h2>
           <h3 className="text-xl font-semibold mb-2">
-            4.1 Order Cancellation by Customer
-          </h3>
-          <p>
-            You may cancel your order before it is shipped by contacting us at
-            dailydosetiffin2022@gmail.com. If the order has already been
-            shipped, it cannot be canceled, but you may return it under our
-            Return Policy.
-          </p>
-          <h3 className="text-xl font-semibold mb-2">
-            4.2 Order Cancellation by DailyDose
+            3.1 Order Cancellation by DailyDose
           </h3>
           <p>
             We reserve the right to cancel orders in the event of pricing
             errors, stock issues, or suspected fraudulent activity.
           </p>
+          <h3 className="text-xl font-semibold mb-2">
+            3.2 No Return
+          </h3>
+          <p>
+            once the order is placed, we will not accept any return
+          </p>
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">6. Contact Us</h2>
+          <h2 className="text-2xl font-semibold mb-4">4. Contact Us</h2>
           <p>
             If you have questions about our refund policy, please email us at
             dailydosetiffin2022@gmail.com or call us at +91 88497 13343.

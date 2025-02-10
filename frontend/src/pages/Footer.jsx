@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaSearch } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaSearch, FaLinkedin } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -38,12 +38,18 @@ export default function Footer() {
             </div>
             <div className="space-x-2 flex items-center">
               <FaFacebookF className="w-6 h-6" /> {/* Facebook icon */}
-              <FaTwitter className="w-6 h-6" /> {/* Twitter icon */}
-              <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
+              <a href="https://www.linkedin.com/company/105765067/admin/dashboard/" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin className="w-6 h-6" /> {/* LinkedIn icon */}
+              </a>
+              <a href="https://www.instagram.com/dailydosetiffin/?igsh=MWdzeTRqcmViOG80dA%3D%3D#" target="_blank" rel="noopener noreferrer" >
+                <FaInstagram className="w-6 h-6" /> {/* Instagram icon */}
+              </a>
             </div>
             <div className="text-center text-sm py-2 hidden md:block">
-              <p className="tracking-wide text-slate-400">Copyright 2024-25. All rights reserved | Privacy Policy</p>
-              <p className="mt-4 tracking-wide">Made with ❤️ by Zikasha</p>
+              <p className="tracking-wide text-slate-400">Copyright 2025 All rights reserved</p>
+              <p className="mt-4 tracking-wide">
+                   Made with ❤️ by <a href="https://zikasha.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Zikasha</a>
+              </p>
             </div>
           </div>
 
@@ -66,8 +72,10 @@ export default function Footer() {
 
 
         <div className="text-center text-sm py-2 mt-8 md:hidden">
-          <p className="tracking-wide text-slate-400">Copyright 2024-25. All rights reserved | Policy Privacy</p>
-          <p className="mt-4 tracking-wide">Made with ❤️ by Zikasha</p>
+          <p className="tracking-wide text-slate-400">Copyright 2025. All rights reserved</p>
+          <p className="mt-4 tracking-wide">
+                   Made with ❤️ by <a href="https://zikasha.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Zikasha</a>
+            </p>
         </div>
       </div>
     </div>
