@@ -82,8 +82,10 @@ const Menu = () => {
   };
   
   const handleRemoveFromCart = (menuId) => {
+    console.log('menuId',menuId);
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === menuId);
+      // console.log(existingItem);
       if (existingItem.quantity === 1) {
         return prevCart.filter((item) => item.id !== menuId);
       } else {
@@ -171,8 +173,8 @@ const Menu = () => {
                   {getQuantity(menu.id) > 0 ? (
                     <div className="flex items-center justify-between w-full">
                       <Button
-                        className="bg-red-500 text-white w-8 h-8 flex items-center justify-center"
-                        onClick={() => handleRemoveFromCart(menu)}
+                        className="bg-red-500 hover:bg-red-600 active:bg-red-600 text-white w-8 h-8 flex items-center justify-center"
+                        onClick={() => handleRemoveFromCart(menu.id)}
                       >
                         -
                       </Button>
@@ -180,7 +182,7 @@ const Menu = () => {
                         {getQuantity(menu.id)}
                       </span>
                       <Button
-                        className="bg-primary text-white w-8 h-8 flex items-center justify-center"
+                        className="bg-primary hover:bg-primary text-white w-8 h-8 flex items-center justify-center"
                         onClick={() => handleAddToCart(menu)}
                       >
                         +
